@@ -3,20 +3,20 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import DayOfWeek, Exercise, Series, Workout
 from .serializers import ExerciseSerializer, SeriesSerializer, WorkoutSerializer
-from rest_framework import generics
+from rest_framework import generics, viewsets
 
 
-class ExerciseView(generics.ListCreateAPIView):
+class ExerciseView(viewsets.ModelViewSet):
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
 
 
-class SeriesView(generics.ListCreateAPIView):
+class SeriesView(generics.RetrieveUpdateDestroyAPIView, generics.ListCreateAPIView):
     queryset = Series.objects.all()
     serializer_class = SeriesSerializer
 
 
-class WorkoutView(generics.ListCreateAPIView):
+class WorkoutView(generics.RetrieveUpdateDestroyAPIView, generics.ListCreateAPIView):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
 
