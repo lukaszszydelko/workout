@@ -19,7 +19,7 @@ class Exercise(models.Model):
 
 
 class Workout(models.Model):
-    workout_date = models.DateTimeField(null=True, blank=True, db_index=True)
+    workout_date = models.DateTimeField(db_index=True)
     other_series = models.TextField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
     day = models.TextField(choices=DayOfWeek.choices, default=DayOfWeek.MONDAY)

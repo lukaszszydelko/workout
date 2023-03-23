@@ -20,6 +20,10 @@ class WorkoutView(generics.RetrieveUpdateDestroyAPIView, generics.ListCreateAPIV
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
 
+    def create(self, request, *args, **kwargs):
+        print("QQQQQQ ", request.data)
+        return super().create(request, *args, **kwargs)
+
 
 def home(request):
     return HttpResponse("This is our homepage")
